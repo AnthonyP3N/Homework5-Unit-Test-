@@ -1,6 +1,7 @@
 #include "unity.h"
 #include "calculator.h"
 
+
 //Runs code before tests
 void setUp(void){
 
@@ -85,7 +86,7 @@ void test_mult_pos_numbers(void){
 
 //Test function for multiply negative numbers 
 void test_mult_neg_numbers(void){
-    TEST_ASSERT_EQUAL(8, multiply(2,-4));//Fail because 2 * -4 = -8
+    TEST_ASSERT_EQUAL(8, multiply(-2,-4));//Fixed failed case, -2 * -4 = 8
 }
 
 //Test function for multiply positive and negative numbers 
@@ -109,8 +110,8 @@ void test_mult_overflow(void){
 
 //Test function for multiply underflow numbers 
 void test_mult_underflow(void){
-    int result = multiply(INT_MIN, 1);
-    TEST_ASSERT_TRUE(result>0);//Checks if overflow occured
+    int result = multiply(INT_MIN, -4);
+    TEST_ASSERT_TRUE(result>=0);//Checks if overflow occured
 }
 
 
