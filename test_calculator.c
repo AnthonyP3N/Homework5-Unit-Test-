@@ -114,6 +114,43 @@ void test_mult_underflow(void){
     TEST_ASSERT_TRUE(result>=0);//Checks if overflow occured
 }
 
+//Test function for division of positive numbers 
+void test_div_pos_numbers(void){
+    TEST_ASSERT_EQUAL(2, divide(10,5));//Expect 10 / 5 = 2
+    TEST_ASSERT_EQUAL(5, divide(50,5));//Fail test case, 50 / 5 = 10 not 5
+}
+
+//Test function for division of negative numbers 
+void test_div_neg_numbers(void){
+    TEST_ASSERT_EQUAL(4, divide(-4000, -1000));//Expect -4000 / -1000 = 4
+    TEST_ASSERT_EQUAL(3, divide(12, -3));//Fail case, 12 / -4 = -3 not 3
+}
+
+//Test function for division of positive and negative numbers 
+void test_div_pos_and_neg_numbers(void){
+    TEST_ASSERT_EQUAL(-2, divide(16,-8));//Expect 16 / -8 = -2
+    TEST_ASSERT_EQUAL(-4, divide(146336,-4));//Expect 146,336 / -4 = -4
+}
+
+//Test function for multiply zero numbers 
+void test_div_zero_numbers(void){
+    TEST_ASSERT_EQUAL(0,divide(5,0));//Expect 5 / 0 = 0
+    TEST_ASSERT_EQUAL(0,divide(12,0));//Expect 12 / 0 = 0
+    TEST_ASSERT_EQUAL(0,divide(-390942,0));//Expect -390942 / 0 = 0
+
+}
+
+//Test function for multiply overflow numbers 
+void test_div_overflow(void){
+    int result = divide(1,INT_MAX);
+    TEST_ASSERT_TRUE(result<0);//Checks if overflow occured
+}
+
+//Test function for multiply underflow numbers 
+void test_div_underflow(void){
+    int result = divide(-4, INT_MIN);
+    TEST_ASSERT_TRUE(result>=0);//Checks if overflow occured
+}
 
 int main(void){
     UNITY_BEGIN();
@@ -135,5 +172,11 @@ int main(void){
     RUN_TEST(test_mult_zero_numbers);//Run multiply test case for zero
     RUN_TEST(test_mult_overflow);//Run multiply test case for overflow
     RUN_TEST(test_mult_underflow);//Run multiply test case for underflow
+    RUN_TEST(test_div_pos_numbers);//Run divison test case for positive numbers
+    RUN_TEST(test_div_neg_numbers);//Run divison test case for negative numbers
+    RUN_TEST(test_div_pos_and_neg_numbers);//Run divison test case for positive and negative numbers
+    RUN_TEST(test_div_zero_numbers);//Run divison test case for zero
+    RUN_TEST(test_div_overflow);//Run divison test case for overflow
+    RUN_TEST(test_div_underflow);//Run divison test case for underflow
     return UNITY_END();
 }
