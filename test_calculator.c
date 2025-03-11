@@ -30,7 +30,7 @@ void test_add_neg_numbers(void){
 void test_add_zero(void){
     TEST_ASSERT_EQUAL(10, add(10,0));//Expect 10 + 0 to equal 10
     TEST_ASSERT_EQUAL(0, add(0,0));//Expect 0 + 0 to equal 0
-    TEST_ASSERT_EQUAL(1, add(1,1));//Expect to fail because it equals 2 not 1
+    TEST_ASSERT_EQUAL(1, add(1,0));//Corret fail case, should be 1 now
 }
 
 //Test function for add overflow 
