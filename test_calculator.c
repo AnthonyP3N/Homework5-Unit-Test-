@@ -78,6 +78,42 @@ void test_subtract_underflow(void){
     TEST_ASSERT_TRUE(result>0);//Checks if underflow occured
 }
 
+//Test function for multiply positive numbers 
+void test_mult_pos_numbers(void){
+    TEST_ASSERT_EQUAL(8, multiply(2,4));//Expect 2 * 4 = 8
+}
+
+//Test function for multiply negative numbers 
+void test_mult_neg_numbers(void){
+    TEST_ASSERT_EQUAL(8, multiply(2,-4));//Fail because 2 * -4 = -8
+}
+
+//Test function for multiply positive and negative numbers 
+void test_mult_pos_and_neg_numbers(void){
+    TEST_ASSERT_EQUAL(-12,multiply(3,-4));//Expect 3 * -4 = -12
+}
+
+//Test function for multiply zero numbers 
+void test_mult_zero_numbers(void){
+    TEST_ASSERT_EQUAL(0,multiply(3,0));//Expect 3 * 0 = 0
+    TEST_ASSERT_EQUAL(0,multiply(5,0));//Expect 5 * 0 = 0
+    TEST_ASSERT_EQUAL(0,multiply(-3,0));//Expect -3 * 0 = 0
+
+}
+
+//Test function for multiply overflow numbers 
+void test_mult_overflow(void){
+    int result = multiply(INT_MAX, 2);
+    TEST_ASSERT_TRUE(result<0);//Checks if overflow occured
+}
+
+//Test function for multiply underflow numbers 
+void test_mult_underflow(void){
+    int result = multiply(INT_MIN, 1);
+    TEST_ASSERT_TRUE(result>0);//Checks if overflow occured
+}
+
+
 int main(void){
     UNITY_BEGIN();
     RUN_TEST(test_add_pos_numbers);//Run add test function for positive numbers
@@ -92,5 +128,11 @@ int main(void){
     RUN_TEST(test_subtract_zero);//Run sub test for zero
     RUN_TEST(test_subtract_overflow);//Run sub test for overflow
     RUN_TEST(test_subtract_underflow);//Run sub test for underflow
+    RUN_TEST(test_mult_pos_numbers);//Run multiply test case for positive numbers
+    RUN_TEST(test_mult_neg_numbers);//Run multiply test case for negative numbers
+    RUN_TEST(test_mult_pos_and_neg_numbers);//Run multiply test case for positive and negative numbers
+    RUN_TEST(test_mult_zero_numbers);//Run multiply test case for zero
+    RUN_TEST(test_mult_overflow);//Run multiply test case for overflow
+    RUN_TEST(test_mult_underflow);//Run multiply test case for underflow
     return UNITY_END();
 }
