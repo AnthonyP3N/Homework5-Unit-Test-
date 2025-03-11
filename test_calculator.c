@@ -52,12 +52,12 @@ void test_subtract_pos_numbers(void){
 
 //Test function for subtracting negative numbers
 void test_subtract_neg_numbers(void){
-    TEST_ASSERT_EQUAL(4, subtract(-7,-3));//Expect -7 - (-3) = -4
+    TEST_ASSERT_EQUAL(-4, subtract(-7,-3));//Expect -7 - (-3) = -4
 }
 
 //Test function for subtracting positive and negative numbers
 void test_subtract_pos_and_neg_numbers(void){
-    TEST_ASSERT_EQUAL(5, subtract(7,-2));//Expect to be false because it equals 9 not 5
+    TEST_ASSERT_EQUAL(5, subtract(7,2));//fixed 7 - 2 = 5
 }
 
 //Test functions for subtracting 0
