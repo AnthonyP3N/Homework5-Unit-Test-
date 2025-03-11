@@ -32,11 +32,26 @@ void test_add_zero(void){
     TEST_ASSERT_EQUAL(0, add(0,0));//Expect 0 + 0 to equal 0
 }
 
+//Test function for add overflow 
+void test_add_overflow(void){
+    int result = add(INT_MAX, 1);//Wrap around or cause undefined 
+    TEST_ASSERT_TRUE(result<0);//Checks if overflow occured
+}
+
+//Test function for add underflow
+void test_add_underflow(void){
+    int result = add(INT_MIN,-1);
+    TEST_ASSERT_TRUE(result>0);//Checks if underflow occured
+}
+
+
 int main(void){
     UNITY_BEGIN();
     RUN_TEST(test_add_pos_numbers);//Run add test function for positive numbers
     RUN_TEST(test_add_pos_and_neg_numbers);//Run add test function for positive and negative numbers
     RUN_TEST(test_add_neg_numbers);//Run add test function for negative numbers
     RUN_TEST(test_add_zero);//Run add test for zero
+    RUN_TEST(test_add_overflow);//Run add test for overflow
+    RUN_TEST(test_add_underflow);//Run add test for underflow
     return UNITY_END();
 }
