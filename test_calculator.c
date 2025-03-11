@@ -45,6 +45,38 @@ void test_add_underflow(void){
     TEST_ASSERT_TRUE(result>0);//Checks if underflow occured
 }
 
+//Test function for subtracting positive numbers
+void test_subtract_pos_numbers(void){
+    TEST_ASSERT_EQUAL(5, subtract(7,2));//Expect 7 - 2 = 5
+}
+
+//Test function for subtracting negative numbers
+void test_subtract_neg_numbers(void){
+    TEST_ASSERT_EQUAL(4, subtract(-7,-3));//Expect -7 - (-3) = -4
+}
+
+//Test function for subtracting positive and negative numbers
+void test_subtract_pos_and_neg_numbers(void){
+    TEST_ASSERT_EQUAL(5, subtract(7,-2));//Expect to be false because it equals 9 not 5
+}
+
+//Test functions for subtracting 0
+void test_subtract_zero(void){
+    TEST_ASSERT_EQUAL(5, subtract(5,0));//Expect 5 - 0 = 0
+    TEST_ASSERT_EQUAL(0, subtract(0,0));//Expect 0 - 0 = 0
+}
+
+//Test function for subtract overflow 
+void test_subtract_overflow(void){
+    int result = subtract(1, INT_MAX + 1);//Wrap around or cause undefined 
+    TEST_ASSERT_TRUE(result<0);//Checks if overflow occured
+}
+
+//Test function for subtract underflow
+void test_subtract_underflow(void){
+    int result = subtract(INT_MIN,1);
+    TEST_ASSERT_TRUE(result>0);//Checks if underflow occured
+}
 
 int main(void){
     UNITY_BEGIN();
@@ -54,5 +86,11 @@ int main(void){
     RUN_TEST(test_add_zero);//Run add test for zero
     RUN_TEST(test_add_overflow);//Run add test for overflow
     RUN_TEST(test_add_underflow);//Run add test for underflow
+    RUN_TEST(test_subtract_pos_numbers);//Run sub test for pos numbers
+    RUN_TEST(test_subtract_neg_numbers);//Run sub test for neg numbers
+    RUN_TEST(test_subtract_pos_and_neg_numbers);//Run sub test for pos and neg numbers
+    RUN_TEST(test_subtract_zero);//Run sub test for zero
+    RUN_TEST(test_subtract_overflow);//Run sub test for overflow
+    RUN_TEST(test_subtract_underflow);//Run sub test for underflow
     return UNITY_END();
 }
